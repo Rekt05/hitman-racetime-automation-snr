@@ -1,0 +1,93 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            zip_name: SNR-Windows
+            executable_path: dist/SNR_Hitman_Racetime_Automation.exe
+          - os: ubuntu-latest
+            zip_name: SNR-Linux
+            executable_path: dist/SNR_Hitman_Racetime_Automation
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build Windows
+        if: matrix.os == 'windows-latest'
+        run: |
+          pyinstaller --name "SNR_Hitman_Racetime_Automation" --onefile --windowed Hitman_Racetime_Automation_SNR.py
+
+      - name: Build Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          pyinstaller --name "SNR_Hitman_Racetime_Automation" --onefile --windowed Hitman_Racetime_Automation_SNR.py
+
+      - name: Zip Windows
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path ${{ matrix.zip_name }}
+          Copy-Item "${{ matrix.executable_path }}" -Destination "${{ matrix.zip_name }}\"
+          Copy-Item -Recurse "SNR" -Destination "${{ matrix.zip_name }}\"
+          Compress-Archive -Path "${{ matrix.zip_name }}\*" -DestinationPath "${{ matrix.zip_name }}.zip"
+
+      - name: Zip Linux
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: |
+          mkdir -p ${{ matrix.zip_name }}
+          cp ${{ matrix.executable_path }} ${{ matrix.zip_name }}/
+          cp -r SNR/ ${{ matrix.zip_name }}/
+          zip -r ${{ matrix.zip_name }}.zip ${{ matrix.zip_name }}/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.zip_name }}
+          path: ${{ matrix.zip_name }}.zip
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+          merge-multiple: true
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1
+          name: Release v1
+          draft: false
+          prerelease: false
+          files: |
+            ./artifacts/SNR-Windows.zip
+            ./artifacts/SNR-Linux.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
