@@ -30,7 +30,7 @@
             "name": "Winner"
         }
     ],
-    "name": "SNR 2",
+    "name": "SNR",
     "groups": [
         {
             "prev_ver": 536870916,
@@ -565,8 +565,8 @@
             "versioned_id": "group",
             "settings": {
                 "custom_size": true,
-                "cx": 770,
-                "cy": 438,
+                "cx": 756,
+                "cy": 426,
                 "id_counter": 0,
                 "items": [
                     {
@@ -2677,8 +2677,8 @@
             "versioned_id": "group",
             "settings": {
                 "custom_size": true,
-                "cx": 577,
-                "cy": 328,
+                "cx": 567,
+                "cy": 319,
                 "id_counter": 0,
                 "items": [
                     {
@@ -2971,8 +2971,8 @@
             "versioned_id": "group",
             "settings": {
                 "custom_size": true,
-                "cx": 581,
-                "cy": 330,
+                "cx": 571,
+                "cy": 321,
                 "id_counter": 0,
                 "items": [
                     {
@@ -3412,8 +3412,8 @@
             "versioned_id": "group",
             "settings": {
                 "custom_size": true,
-                "cx": 749,
-                "cy": 426,
+                "cx": 736,
+                "cy": 414,
                 "id_counter": 13,
                 "items": [
                     {
@@ -3559,8 +3559,8 @@
             "versioned_id": "group",
             "settings": {
                 "custom_size": true,
-                "cx": 749,
-                "cy": 426,
+                "cx": 736,
+                "cy": 414,
                 "id_counter": 13,
                 "items": [
                     {
@@ -3736,10 +3736,10 @@
             "id": "group",
             "versioned_id": "group",
             "settings": {
-                "id_counter": 0,
                 "custom_size": true,
                 "cx": 1920,
                 "cy": 1080,
+                "id_counter": 0,
                 "items": [
                     {
                         "name": "Stream 7",
@@ -3883,10 +3883,10 @@
             "id": "group",
             "versioned_id": "group",
             "settings": {
-                "id_counter": 0,
                 "custom_size": true,
                 "cx": 587,
                 "cy": 330,
+                "id_counter": 0,
                 "items": [
                     {
                         "name": "Stream 8",
@@ -4030,10 +4030,10 @@
             "id": "group",
             "versioned_id": "group",
             "settings": {
-                "id_counter": 0,
                 "custom_size": true,
                 "cx": 524,
                 "cy": 295,
+                "id_counter": 0,
                 "items": [
                     {
                         "name": "Stream 9",
@@ -4177,10 +4177,10 @@
             "id": "group",
             "versioned_id": "group",
             "settings": {
-                "id_counter": 0,
                 "custom_size": true,
                 "cx": 491,
                 "cy": 277,
+                "id_counter": 0,
                 "items": [
                     {
                         "name": "Stream 10",
@@ -4324,10 +4324,10 @@
             "id": "group",
             "versioned_id": "group",
             "settings": {
-                "id_counter": 0,
                 "custom_size": true,
                 "cx": 491,
                 "cy": 277,
+                "id_counter": 0,
                 "items": [
                     {
                         "name": "Stream 11",
@@ -4471,10 +4471,10 @@
             "id": "group",
             "versioned_id": "group",
             "settings": {
-                "id_counter": 0,
                 "custom_size": true,
                 "cx": 521,
                 "cy": 293,
+                "id_counter": 0,
                 "items": [
                     {
                         "name": "Stream 12",
@@ -5690,7 +5690,7 @@
             "push-to-mute": false,
             "push-to-mute-delay": 0,
             "push-to-talk": false,
-            "push-to-talk-delay": 0,
+            "push-to-talk-delay": 3,
             "hotkeys": {
                 "libobs.mute": [],
                 "libobs.unmute": [],
@@ -9570,7 +9570,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "undo_sname": "Stream 1",
-                "url": "https://player.twitch.tv/?channel=rekt0&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
+                "url": "https://player.twitch.tv/?channel=turaku&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
                 "width": 1920,
                 "height": 1080,
                 "reroute_audio": true
@@ -9578,7 +9578,7 @@
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 0.01283253263682127,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -9607,12 +9607,13 @@
             "settings": {
                 "url": "https://player.twitch.tv/?channel=rekt0&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
                 "width": 1920,
-                "height": 1080
+                "height": 1080,
+                "reroute_audio": true
             },
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 1.0,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -9629,7 +9630,7 @@
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
-            "monitoring_type": 0,
+            "monitoring_type": 2,
             "private_settings": {}
         },
         {
@@ -9641,12 +9642,13 @@
             "settings": {
                 "url": "https://player.twitch.tv/?channel=rekt0&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
                 "width": 1920,
-                "height": 1080
+                "height": 1080,
+                "reroute_audio": true
             },
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 1.0,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -9663,7 +9665,7 @@
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
-            "monitoring_type": 0,
+            "monitoring_type": 2,
             "private_settings": {}
         },
         {
@@ -9675,12 +9677,13 @@
             "settings": {
                 "url": "https://player.twitch.tv/?channel=rekt0&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
                 "width": 1920,
-                "height": 1080
+                "height": 1080,
+                "reroute_audio": true
             },
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 1.0,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -9697,7 +9700,7 @@
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
-            "monitoring_type": 0,
+            "monitoring_type": 2,
             "private_settings": {}
         },
         {
@@ -9715,10 +9718,10 @@
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 0.0,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
-            "muted": false,
+            "muted": true,
             "push-to-mute": false,
             "push-to-mute-delay": 0,
             "push-to-talk": false,
@@ -9751,10 +9754,10 @@
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 0.3593558967113495,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
-            "muted": false,
+            "muted": true,
             "push-to-mute": false,
             "push-to-mute-delay": 0,
             "push-to-talk": false,
@@ -9787,7 +9790,7 @@
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 0.21036271750926971,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
             "muted": true,
@@ -9822,10 +9825,10 @@
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 0.015285526402294636,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
-            "muted": false,
+            "muted": true,
             "push-to-mute": false,
             "push-to-mute-delay": 0,
             "push-to-talk": false,
@@ -9849,7 +9852,7 @@
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
-                "url": "https://player.twitch.tv/?channel=turaku&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
+                "url": "https://player.twitch.tv/?channel=sparklxs&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
                 "width": 1920,
                 "height": 1080,
                 "reroute_audio": true
@@ -9857,10 +9860,10 @@
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 0.0,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
-            "muted": false,
+            "muted": true,
             "push-to-mute": false,
             "push-to-mute-delay": 0,
             "push-to-talk": false,
@@ -9884,14 +9887,15 @@
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
+                "url": "https://player.twitch.tv/?channel=channeljoined&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
                 "width": 1920,
                 "height": 1080,
-                "url": "https://player.twitch.tv/?channel=rekt0&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137"
+                "reroute_audio": true
             },
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 1.0,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -9908,7 +9912,7 @@
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
-            "monitoring_type": 0,
+            "monitoring_type": 2,
             "private_settings": {}
         },
         {
@@ -9920,12 +9924,13 @@
             "settings": {
                 "url": "https://player.twitch.tv/?channel=rekt0&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
                 "width": 1920,
-                "height": 1080
+                "height": 1080,
+                "reroute_audio": true
             },
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 1.0,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -9942,7 +9947,7 @@
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
-            "monitoring_type": 0,
+            "monitoring_type": 2,
             "private_settings": {}
         },
         {
@@ -9952,14 +9957,15 @@
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
-                "url": "https://player.twitch.tv/?channel=rekt0&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
+                "url": "https://player.twitch.tv/?channel=channeljoined&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137",
                 "width": 1920,
-                "height": 1080
+                "height": 1080,
+                "reroute_audio": true
             },
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 1.0,
+            "volume": 0.03162277489900589,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -9976,7 +9982,7 @@
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
-            "monitoring_type": 0,
+            "monitoring_type": 2,
             "private_settings": {}
         },
         {
@@ -10072,8 +10078,8 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v2",
             "settings": {
-                "text": "Rekt",
                 "undo_sname": "Streamer Name 1",
+                "text": "Turaku",
                 "font": {
                     "face": "Japanese 3017",
                     "flags": 0,
@@ -10108,13 +10114,13 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v3",
             "settings": {
+                "text": "Rekt",
                 "font": {
                     "face": "Japanese 3017",
-                    "style": "Regular",
+                    "flags": 0,
                     "size": 256,
-                    "flags": 0
-                },
-                "text": "Rekt"
+                    "style": "Regular"
+                }
             },
             "mixers": 0,
             "sync": 0,
@@ -10140,13 +10146,13 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v3",
             "settings": {
+                "text": "Rekt",
                 "font": {
                     "face": "Japanese 3017",
-                    "style": "Regular",
+                    "flags": 0,
                     "size": 256,
-                    "flags": 0
-                },
-                "text": "Rekt"
+                    "style": "Regular"
+                }
             },
             "mixers": 0,
             "sync": 0,
@@ -10172,13 +10178,13 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v3",
             "settings": {
+                "text": "Rekt",
                 "font": {
                     "face": "Japanese 3017",
-                    "style": "Regular",
+                    "flags": 0,
                     "size": 256,
-                    "flags": 0
-                },
-                "text": "Rekt"
+                    "style": "Regular"
+                }
             },
             "mixers": 0,
             "sync": 0,
@@ -10204,8 +10210,8 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v2",
             "settings": {
-                "text": "Moo",
                 "undo_sname": "Text 1",
+                "text": "Moo",
                 "font": {
                     "face": "Japanese 3017",
                     "flags": 0,
@@ -10345,7 +10351,7 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v2",
             "settings": {
-                "text": "Turaku",
+                "text": "Spark",
                 "font": {
                     "face": "Japanese 3017",
                     "flags": 0,
@@ -10378,13 +10384,13 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v3",
             "settings": {
+                "text": "ChannelJoined",
                 "font": {
                     "face": "Japanese 3017",
-                    "style": "Regular",
+                    "flags": 0,
                     "size": 256,
-                    "flags": 0
-                },
-                "text": "Rekt"
+                    "style": "Regular"
+                }
             },
             "mixers": 0,
             "sync": 0,
@@ -10410,13 +10416,13 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v3",
             "settings": {
+                "text": "Rekt",
                 "font": {
                     "face": "Japanese 3017",
-                    "style": "Regular",
+                    "flags": 0,
                     "size": 256,
-                    "flags": 0
-                },
-                "text": "Rekt"
+                    "style": "Regular"
+                }
             },
             "mixers": 0,
             "sync": 0,
@@ -10442,13 +10448,13 @@
             "id": "text_gdiplus",
             "versioned_id": "text_gdiplus_v3",
             "settings": {
-                "text": "Rekt",
                 "font": {
                     "face": "Japanese 3017",
-                    "style": "Regular",
+                    "flags": 0,
                     "size": 256,
-                    "flags": 0
-                }
+                    "style": "Regular"
+                },
+                "text": "Rekt"
             },
             "mixers": 0,
             "sync": 0,
@@ -10755,9 +10761,9 @@
                             "duration": 0
                         },
                         "private_settings": {
+                            "collapsed": true,
                             "color": "",
-                            "color-preset": 6,
-                            "collapsed": true
+                            "color-preset": 6
                         }
                     },
                     {
@@ -12220,9 +12226,9 @@
                             "duration": 0
                         },
                         "private_settings": {
+                            "collapsed": true,
                             "color": "",
-                            "color-preset": 6,
-                            "collapsed": true
+                            "color-preset": 6
                         }
                     },
                     {
@@ -12390,8 +12396,8 @@
                         },
                         "private_settings": {
                             "collapsed": true,
-                            "color-preset": 7,
-                            "color": ""
+                            "color": "",
+                            "color-preset": 7
                         }
                     },
                     {
@@ -12559,8 +12565,8 @@
                         },
                         "private_settings": {
                             "collapsed": true,
-                            "color-preset": 7,
-                            "color": ""
+                            "color": "",
+                            "color-preset": 7
                         }
                     },
                     {
@@ -12728,8 +12734,8 @@
                         },
                         "private_settings": {
                             "collapsed": true,
-                            "color-preset": 7,
-                            "color": ""
+                            "color": "",
+                            "color-preset": 7
                         }
                     },
                     {
@@ -12897,8 +12903,8 @@
                         },
                         "private_settings": {
                             "collapsed": true,
-                            "color-preset": 7,
-                            "color": ""
+                            "color": "",
+                            "color-preset": 7
                         }
                     },
                     {
@@ -13066,8 +13072,8 @@
                         },
                         "private_settings": {
                             "collapsed": true,
-                            "color-preset": 7,
-                            "color": ""
+                            "color": "",
+                            "color-preset": 7
                         }
                     },
                     {
@@ -13235,8 +13241,8 @@
                         },
                         "private_settings": {
                             "collapsed": true,
-                            "color-preset": 7,
-                            "color": ""
+                            "color": "",
+                            "color-preset": 7
                         }
                     },
                     {
@@ -13374,22 +13380,22 @@
                 "libobs.hide_scene_item.1": [],
                 "libobs.show_scene_item.2": [],
                 "libobs.hide_scene_item.2": [],
+                "libobs.show_scene_item.33": [],
+                "libobs.hide_scene_item.33": [],
+                "libobs.show_scene_item.30": [],
+                "libobs.hide_scene_item.30": [],
+                "libobs.show_scene_item.27": [],
+                "libobs.hide_scene_item.27": [],
+                "libobs.show_scene_item.24": [],
+                "libobs.hide_scene_item.24": [],
+                "libobs.show_scene_item.21": [],
+                "libobs.hide_scene_item.21": [],
+                "libobs.show_scene_item.18": [],
+                "libobs.hide_scene_item.18": [],
                 "libobs.show_scene_item.9": [],
                 "libobs.hide_scene_item.9": [],
                 "libobs.show_scene_item.10": [],
-                "libobs.hide_scene_item.10": [],
-                "libobs.show_scene_item.18": [],
-                "libobs.hide_scene_item.18": [],
-                "libobs.show_scene_item.21": [],
-                "libobs.hide_scene_item.21": [],
-                "libobs.show_scene_item.24": [],
-                "libobs.hide_scene_item.24": [],
-                "libobs.show_scene_item.27": [],
-                "libobs.hide_scene_item.27": [],
-                "libobs.show_scene_item.30": [],
-                "libobs.hide_scene_item.30": [],
-                "libobs.show_scene_item.33": [],
-                "libobs.hide_scene_item.33": []
+                "libobs.hide_scene_item.10": []
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
