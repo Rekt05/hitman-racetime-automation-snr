@@ -24,7 +24,7 @@ def get_external_path(filename):
     return os.path.join(base_path, filename)
 
 #version config
-version = "1"
+version = "1.1"
 version_url = "https://raw.githubusercontent.com/Rekt05/hitman-racetime-automation-snr/refs/heads/main/current_version.txt"
 releases_url = "https://github.com/Rekt05/hitman-racetime-automation-snr/releases/latest"
 
