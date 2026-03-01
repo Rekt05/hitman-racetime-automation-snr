@@ -6,7 +6,7 @@ The OBS Scene Collection this entire app was based on was made by the awesome [T
 
 [Linux install video](https://youtu.be/cg9OBavoEqw) - VERY OUTDATED, refer to basically all the text below for a more comprehensive overview, ESPECIALLY FOR SNR
 
-Windows video coming eventually when linux is confirmed to be working
+Windows video coming eventually
 
 Currently this comes with 2 JSON file presets:
 - SNR.json
@@ -24,6 +24,7 @@ Usage Instructions/Notes:
 - You can freely move and resize things like "Steamer Name X" and the stream itself and the program will still work as intended, to move the names click on the source in the appropriate folder, to move/resize the stream just click on it in the preview.
 - If you want to move the name to be on top of the video player, remember to drag it above the stream source in the folder.
 - The reset stream positions button resets the streams position and size to the 2x3 layout
+- If you are using this with a co caster you need to make an application audio capture for discord and copy and paste it onto each scene
 
 Ideas:
 - Add functionality to auto resize streams accoring to the amount of people per page
