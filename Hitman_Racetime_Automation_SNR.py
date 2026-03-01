@@ -24,7 +24,7 @@ def get_external_path(filename):
     return os.path.join(base_path, filename)
 
 #version config
-version = "1.1"
+version = "1.2"
 version_url = "https://raw.githubusercontent.com/Rekt05/hitman-racetime-automation-snr/refs/heads/main/current_version.txt"
 releases_url = "https://github.com/Rekt05/hitman-racetime-automation-snr/releases/latest"
 
@@ -35,6 +35,7 @@ obsport = 4455
 #scene and source info
 scene16 = "Streams 1-6"
 scene712 = "Streams 7-12"
+scene1318 = "Streams 13-18"
 
 twitchlink = "https://player.twitch.tv/?channel={}&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&quality=720p60&volume=0.7699999809265137"
 twitchregex = re.compile(r'(?:https?://)?(?:www\.)?twitch\.tv/([a-zA-Z0-9_]+)')
@@ -97,10 +98,10 @@ class RacetimeAutomation:
         playersection.pack(fill="both", expand=True, padx=10, pady=5)
 
         #player slots
-        slots_frame = ttk.LabelFrame(playersection, text="Player Slots (1-12)", padding=10)
+        slots_frame = ttk.LabelFrame(playersection, text="Player Slots (1-18)", padding=10)
         slots_frame.pack(side="left", fill="both", expand=True, padx=(0, 5))
 
-        for i in range(1, 13):
+        for i in range(1, 19):
             self.create_slot(slots_frame, i)
 
         #removed players blacklist
@@ -124,19 +125,19 @@ class RacetimeAutomation:
             return
 
         coords = {
-            1: (15, 15), 
-            2: (650, 15), 
-            3: (1285, 15),
-            4: (15, 420), 
-            5: (650, 420), 
-            6: (1285, 420)
+            1: (3, 3), 
+            2: (642, 3), 
+            3: (1281, 3),
+            4: (3, 406), 
+            5: (642, 406), 
+            6: (1281, 406)
         }
 
         self.cache_scene_items()
 
         try:
             for slot in self.slots:
-                pos_index = slot['index'] if slot['index'] <= 6 else slot['index'] - 6
+                pos_index = ((slot['index'] - 1) % 6) + 1
                 x, y = coords[pos_index]
 
                 folder_id = self.get_item_id(slot['scene'], slot['foldersource'])
@@ -148,7 +149,7 @@ class RacetimeAutomation:
                             "positionX": x,
                             "positionY": y,
                             "boundsType": "OBS_BOUNDS_STRETCH",
-                            "boundsWidth": 620,
+                            "boundsWidth": 636,
                             "boundsHeight": 400
                         }
                     ))
@@ -166,13 +167,13 @@ class RacetimeAutomation:
                             "boundsType": "OBS_BOUNDS_NONE"
                         }
                     ))
-            self.log("Folders repositioned and resized to 620x400.")
+            self.log("Positions and sizes reset.")
         except Exception as e:
             self.log(f"Reset failed: {e}")
 
     def cache_scene_items(self):
         self.scenemap = {}
-        for scene in [scene16, scene712]:
+        for scene in [scene16, scene712, scene1318]:
             self.scenemap[scene] = {}
             try:
                 resp = self.ws.call(obs_requests.GetSceneItemList(sceneName=scene))
@@ -291,7 +292,7 @@ class RacetimeAutomation:
             "index": i,
             "namevar": tk.StringVar(),
             "statuslbl": ttk.Label(frame, text="Empty", width=15),
-            "scene": scene16 if 1 <= i <= 6 else scene712,
+            "scene": scene16 if 1 <= i <= 6 else (scene712 if 7 <= i <= 12 else scene1318),
             "foldersource": f"Stream #{i}",
             "textsource": f"Streamer Name {i}",
             "browsersource": f"Stream {i}"
