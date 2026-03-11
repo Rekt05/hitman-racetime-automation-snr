@@ -1,34 +1,69 @@
-## This readme is a copy of the SN race app and was only quickly scanned through and edited so not all information may be accurate but it should mostly be ok
+# SNR Racetime Automation
 
 This app takes a racetime.gg link and automatically adds the player streams to an obs layout specifically made for hitman SN Races
 
 The OBS Scene Collection this entire app was based on was made by the awesome [ThatObserver](https://www.youtube.com/channel/UCY6kHCCKxcVRcMVf9PBtz6w)
 
-[Linux install video](https://youtu.be/cg9OBavoEqw) - VERY OUTDATED, refer to basically all the text below for a more comprehensive overview, ESPECIALLY FOR SNR
+## Installation Guide:
+- Go to the [releases](https://github.com/Rekt05/hitman-racetime-automation-snr/releases) and download the latest version that corresponds to your os - for windows download SNR-Windows.zip and for linux download SNR-Linux.zip
+- Extract the folder wherever
+- This folder contains 2 items namely a folder called "SNR" and an executable called "SNR_Hitman_Racetime_Automation.exe" (or just SNR_Hitman_Racetime_Automation on linux), the SNR folder contains all the things OBS needs and the executable is the app itself
+- Go to OBS (probably recommended that you use the latest version)
+- Import the scene to OBS with Scene Collection -> Import -> Browse -> SNR.json in the SNR folder, use the same folder when it asks you to locate the missing images.
+- Enable the OBS WebSocket server under Tools -> WebSocket Server Settings
+- Ensure that your port number is the default (4455)
+- Copy your OBS WebSocket Server Password under Tools -> WebSocket Server Settings -> Show Connect Info -> Server Password
+- Open the app and insert your now copied OBS password in the box on top
+### Misc
+- If you want to use the intended font, open the SNR folder and double click on the .ttf font and click install, restart your pc/obs for the font to apply.
+- Ensure that your mic and any other applicable audio sources are configured properly by going to said sources and checking that your devices are selected there.
+- If you are using this with a co caster you need to make an application audio capture for discord and copy and paste it onto each scene [(see detailed)](#obs-application-audio-capture-setup)
 
-Windows video coming eventually
+## Usage Guide
+- Start the app by clicking the "Start" button after you have entered your OBS password
+- Click the "Find Current Race" button to automatically find the currently open/active hitman race or paste in the link to a racetime room yourself.
+- For descriptions of the rest of the Race Configuration Buttons see below:
+    - Aspect Ratio: Click either 16:9 or 16:10 to select said aspect ratio, these ratios are not applied from that button press, but rather if you use another feature that changes the display of streams (ex. "Reset All Positions", "6P/4P/2P/1P") this aspect ratio will be used
+    - Finished Timer: This sets the timer for how long the program should wait before auto removing players from the racetime lobby (0-45s) - this is only applicable if you have the setting below toggled on
+    - Auto Remove Finished: When toggled on this will initiate a timer (specified above) to remove players who have either clicked done or dnf on racetime - this feature could be weird for casting so i would probably recommend to leave it off and remove the players yourself
+    - Auto Resize Streams: This automates the manual resizing of streams based on the amount of players per screen, ex. if streams 7-12 has 2 players it will automatically resize said 2 streams to take up more screen space
+    - Reset All Positions: When clicked it resets all the streams to their 6 stream state
+    - Refresh All Streams: When clicked it refreshes all of the streams, this is useful when ex. you want to refresh multiple people who are offline but have since gone live
+- For descriptions of the Player Slots Section see below:
+    - 6P/4P/2P/1P: Clicking these buttons will resize the streams to fit the amount of players left on each screen, if you do not have "Auto Resize Streams" toggled on you can manually do it here
+    - Up/Down: Moves the stream up or down a slot
+    - Remove: Removes the stream and adds them to the "Removed Players" section
+    - Refresh: Refreshes the individual stream
+- Removed players get added to the "Removed Players" section, you can add them back if you so wish by clicking the + button next to their names
+### Misc
+- Place the spin images in the "Spins" Folder so that they are present on all 3 stream scenes
+- If you encounter any unexpected errors mid race just restart the app and it will fix it most of the time
+- Remember that the name should appear above the stream in the sources list otherwise the name will not display on top
+- The very bottom bar displays updates when you do actions in the app if you needed to see that for some reason
 
-Currently this comes with 2 JSON file presets:
-- SNR.json
+## Update Guide
+- Go to the [releases](https://github.com/Rekt05/hitman-racetime-automation-snr/releases) and download the latest version that corresponds to your os - for windows download SNR-Windows.zip and for linux download SNR-Linux.zip
+- Extract the folder wherever
+- This folder contains 2 items namely a folder called "SNR" and an executable called "SNR_Hitman_Racetime_Automation.exe" (or just SNR_Hitman_Racetime_Automation on linux), the SNR folder contains all the things OBS needs and the executable is the app itself
+- Go to your old SNR-OS (SNR -Windows/-Linux) folder and copy and paste the config.ini over to your new SNR-OS
+- On the release I will have indicated whether the update is a large or small update compared to the previous release, if it is indicated as a large update follow the OBS Scene Collection install instructions again:
+    - Go to OBS (probably recommended that you use the latest version)
+    - If you want to remove the old SNR scene collection you can delete it or rename it as such
+    - Import the scene to OBS with Scene Collection -> Import -> Browse -> SNR.json in the SNR folder, use the same folder when it asks you to locate the missing images.
 
-You can go through the import process with any combination of presets of your choosing and the app will work for the scene collection you are currently using.
-If you have a preset you would like to add refer to the very bottom of the readme
+### OBS Application Audio capture setup
+- you will have to create an application audio capture or the linux equivalent of a application audio capture for discord in any scene -> name it whatever you want (i used "Discord Audio") 
+- for "Window" select the one that says discord.exe 
+- for "Window Match Priority" select "Match title, otherwise find window of same __executable__"
+- copy the new source (ctrl c/right click copy)
+- paste the new source in all other scenes as a reference (ctrl v/right click paste (reference) - the only option should be reference and duplicate should be greyed out)
+- you can confirm this worked if it now falls under the audio mixer for each scene and if you change the volume on one scene it also changes on the other
 
-Usage Instructions/Notes:
-- Import the scene to obs with Scene Collection -> Import -> Browse -> SNR.json in the SNR folder, use the same folder when it asks you to locate the missing images.
-- For the OBS password go to Tools -> WebSocket Server Settings -> Show Connect Info -> Server Password. Make sure that Enable WebSocket server under Tools -> WebSocket Server Settings is also enabled. 
-- Paste in the racetime link or click the "Find Current Race" button.
-- Use the arrow buttons to move the players up/down the list and use the trash can button to remove them from the list, you can add them back using the + button in the Removed Players section.
-- Ensure that your mic and any other applicable audio sources are configured properly.
-- Double click in the .ttf font and click install, restart your pc/obs for the font to apply.
-- You can freely move and resize things like "Steamer Name X" and the stream itself and the program will still work as intended, to move the names click on the source in the appropriate folder, to move/resize the stream just click on it in the preview.
-- If you want to move the name to be on top of the video player, remember to drag it above the stream source in the folder.
-- The reset stream positions button resets the streams position and size to the 2x3 layout
-- If you are using this with a co caster you need to make an application audio capture for discord and copy and paste it onto each scene
+## To Do:
+- Add SNSASO toggle, will make things easier to only have to maintain 1 app and snsaso app is lacking a lot on functionality
+- Store many options in the cfg .ini (ex. above mentioned snsaso toggle, timer duration, toggled options)
+- Potentially look into a better way to display 4p screens (SNR - idk if there is one)
+- Record video guide for install + usage
+- Automate the Stream (Zoom) scene if anyone cares about it
 
-Ideas:
-- Add functionality to auto resize streams accoring to the amount of people per page
-
-if you have any ideas for features or if you have a preset you would like to add open a *pr or dm me on discord @Rekt05
-
-*for Preset PR's you can make sure to find and replace you computer name from the file path to potentially avoid leaking personal information.
+For and issues or suggestions dm me on discord @Rekt05
