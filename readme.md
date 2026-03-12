@@ -66,5 +66,8 @@ The OBS Scene Collection this entire app was based on was made by the awesome [T
 - Potentially look into a better way to display 4p screens (SNR - idk if there is one)
 - Record video guide for install + usage
 - Automate the Stream (Zoom) scene if anyone cares about it
-
+- Add a way to swap players around directly so that only 1 position has to change to make the position of a given player more uniform across a race
+- Look at a way to not have to refresh streams when moved (this is probably completely unfeasible without having all 18 streams on 1 scene though)
+- Look at resolutions, does a 480p player look any worse for 6p/4p?
+  
 For and issues or suggestions dm me on discord @Rekt05
