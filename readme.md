@@ -61,6 +61,7 @@ The OBS Scene Collection this entire app was based on was made by the awesome [T
 
 ## To Do:
 - Add SNSASO toggle, will make things easier to only have to maintain 1 app and snsaso app is lacking a lot on functionality
+- Add options to configure the height of names in app much like the timer duration
 - Store many options in the cfg .ini (ex. above mentioned snsaso toggle, timer duration, toggled options)
 - Potentially look into a better way to display 4p screens (SNR - idk if there is one)
 - Record video guide for install + usage
