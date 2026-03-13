@@ -24,7 +24,7 @@ def get_external_path(filename):
     return os.path.join(base_path, filename)
 
 #version config
-version = "2"
+version = "2.1"
 version_url = "https://raw.githubusercontent.com/Rekt05/hitman-racetime-automation-snr/refs/heads/main/current_version.txt"
 releases_url = "https://github.com/Rekt05/hitman-racetime-automation-snr/releases/latest"
 
@@ -42,7 +42,7 @@ class RacetimeAutomation:
     def __init__(self, root):
         self.root = root
         self.root.title("SNR Racetime Automation")
-        self.root.geometry("950x950") 
+        self.root.geometry("950x1000") 
         
         self.ws = None
         self.is_monitoring = False
@@ -62,6 +62,7 @@ class RacetimeAutomation:
         self.btn_auto_resize = None
         self.remove_delay_var = tk.StringVar(value="10")
         self.remove_delay_var.trace_add("write", lambda *args: self.update_button_text())
+        self.name_height_var = tk.StringVar(value=75)
 
         #password
         self.config = configparser.ConfigParser()
@@ -94,37 +95,47 @@ class RacetimeAutomation:
         racesection = ttk.LabelFrame(root, text="Race Configuration", padding=(10, 5))
         racesection.pack(fill="x", padx=10, pady=2)
 
-        racesection.columnconfigure(3, weight=1)
-
         ttk.Label(racesection, text="Racetime URL:").grid(row=0, column=0, sticky="w")
-        ttk.Entry(racesection, textvariable=self.urlvar, width=40).grid(row=0, column=1, padx=2, sticky="w")
+        ttk.Entry(racesection, textvariable=self.urlvar, width=50).grid(row=0, column=1, padx=5, sticky="w")
         ttk.Button(racesection, text="Find Current Race", command=self.get_current).grid(row=0, column=2, padx=2, sticky="w")
-        
-        tool_frame = ttk.Frame(racesection)
-        tool_frame.grid(row=1, column=0, columnspan=4, sticky="w", pady=(2, 0))
 
-        ttk.Label(tool_frame, text="Aspect Ratio:").pack(side="left", padx=(0, 2))
+        #stream config section
+        configsection = ttk.LabelFrame(root, text="Stream Configurations", padding=(10, 5))
+        configsection.pack(fill="x", padx=10, pady=2)
+
+        ratio_frame = ttk.Frame(configsection)
+        ratio_frame.grid(row=0, column=0, sticky="w", pady=2)
         
-        self.btn_169 = ttk.Button(tool_frame, text="[X] 16:9", width=8, command=lambda: self.set_global_ratio("16:9"))
+        ttk.Label(ratio_frame, text="Aspect Ratio:").pack(side="left", padx=(0, 2))
+        self.btn_169 = ttk.Button(ratio_frame, text="[X] 16:9", width=10, command=lambda: self.set_global_ratio("16:9"))
         self.btn_169.pack(side="left", padx=2)
-        
-        self.btn_1610 = ttk.Button(tool_frame, text="[ ] 16:10", width=8, command=lambda: self.set_global_ratio("16:10"))
+        self.btn_1610 = ttk.Button(ratio_frame, text="[ ] 16:10", width=10, command=lambda: self.set_global_ratio("16:10"))
         self.btn_1610.pack(side="left", padx=2)
 
-        ttk.Label(tool_frame, text="Finished Timer:").pack(side="left", padx=(5, 2))
+        reset_frame = ttk.Frame(configsection)
+        reset_frame.grid(row=1, column=0, sticky="w", pady=2)
 
-        vcmd = (self.root.register(self.validate_timer), '%P')
-        self.delay_entry = ttk.Entry(tool_frame, textvariable=self.remove_delay_var, width=5, validate='key', validatecommand=vcmd)
+        ttk.Label(reset_frame, text="Name Height:").pack(side="left", padx=(0, 2))
+        vcmd_height = (self.root.register(self.validate_height), '%P')
+        self.height_entry = ttk.Entry(reset_frame, textvariable=self.name_height_var, width=6, validate='key', validatecommand=vcmd_height)
+        self.height_entry.pack(side="left", padx=2)
+
+        ttk.Button(reset_frame, text="Reset All Positions", command=self.reset_stream_positions).pack(side="left", padx=(2, 2))
+        ttk.Button(reset_frame, text="Refresh All Streams", command=self.refresh_all_streams).pack(side="left", padx=2)
+
+        auto_frame = ttk.Frame(configsection)
+        auto_frame.grid(row=2, column=0, sticky="w", pady=2)
+
+        ttk.Label(auto_frame, text="Finished Timer:").pack(side="left", padx=(0, 2))
+        vcmd_timer = (self.root.register(self.validate_timer), '%P')
+        self.delay_entry = ttk.Entry(auto_frame, textvariable=self.remove_delay_var, width=6, validate='key', validatecommand=vcmd_timer)
         self.delay_entry.pack(side="left", padx=2)
 
-        self.btn_auto_remove = ttk.Button(tool_frame, text="[ ] Auto Remove Finished [10s]", command=self.toggle_auto_remove)
-        self.btn_auto_remove.pack(side="left", padx=2)
+        self.btn_auto_remove = ttk.Button(auto_frame, text="[ ] Auto Remove Finished", command=self.toggle_auto_remove)
+        self.btn_auto_remove.pack(side="left", padx=(2, 2))
 
-        self.btn_auto_resize = ttk.Button(tool_frame, text="[ ] Auto Resize Streams", command=self.toggle_auto_resize)
+        self.btn_auto_resize = ttk.Button(auto_frame, text="[ ] Auto Resize Streams", command=self.toggle_auto_resize)
         self.btn_auto_resize.pack(side="left", padx=2)
-
-        ttk.Button(tool_frame, text="Reset All Positions", command=self.reset_stream_positions).pack(side="left", padx=2)
-        ttk.Button(tool_frame, text="Refresh All Streams", command=self.refresh_all_streams).pack(side="left", padx=2)
 
         #player section
         playersection = ttk.Frame(root)
@@ -179,6 +190,19 @@ class RacetimeAutomation:
             return int(self.remove_delay_var.get())
         except ValueError:
             return 10
+        
+    def validate_height(self, P):
+        if P == "": return True
+        if P.isdigit():
+            val = int(P)
+            return 0 <= val <= 100
+        return False
+
+    def get_name_height(self):
+        try:
+            return float(self.name_height_var.get())
+        except ValueError:
+            return 75.0
         
     def update_button_text(self):
         state = "[X]" if self.auto_remove_finished.get() else "[ ]"
@@ -239,6 +263,8 @@ class RacetimeAutomation:
 
                 sid = next((i['sceneItemId'] for i in items if i['sourceName'] == slot['browsersource']), None)
                 if sid is not None:
+                    name_height = self.get_name_height()
+
                     self.ws.call(obs_requests.SetSceneItemTransform(
                         sceneName=scene_name, sceneItemId=sid,
                         sceneItemTransform={
@@ -260,7 +286,7 @@ class RacetimeAutomation:
                             "alignment": 6, "boundsAlignment": 6,
                             "boundsType": "OBS_BOUNDS_SCALE_INNER",
                             "boundsWidth": float(s_width - (padding * 2)),
-                            "boundsHeight": 75.0,
+                            "boundsHeight": name_height,
                             "cropLeft": 0, "cropRight": 0, "cropTop": 0, "cropBottom": 0,
                             "scaleX": 1.0, "scaleY": 1.0
                         }

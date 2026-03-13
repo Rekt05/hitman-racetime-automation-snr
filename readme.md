@@ -24,6 +24,7 @@ The OBS Scene Collection this entire app was based on was made by the awesome [T
 - Click the "Find Current Race" button to automatically find the currently open/active hitman race or paste in the link to a racetime room yourself.
 - For descriptions of the rest of the Race Configuration Buttons see below:
     - Aspect Ratio: Click either 16:9 or 16:10 to select said aspect ratio, these ratios are not applied from that button press, but rather if you use another feature that changes the display of streams (ex. "Reset All Positions", "6P/4P/2P/1P") this aspect ratio will be used
+    - Name Height: This sets the height of player names (0-100), much like the aspect ratio this height is not applied from that button press, but rather if you use another feature that changes the display of streams, I think the recommended sweetspot is somewhere between 50 and 90
     - Finished Timer: This sets the timer for how long the program should wait before auto removing players from the racetime lobby (0-45s) - this is only applicable if you have the setting below toggled on
     - Auto Remove Finished: When toggled on this will initiate a timer (specified above) to remove players who have either clicked done or dnf on racetime - this feature could be weird for casting so i would probably recommend to leave it off and remove the players yourself
     - Auto Resize Streams: This automates the manual resizing of streams based on the amount of players per screen, ex. if streams 7-12 has 2 players it will automatically resize said 2 streams to take up more screen space
@@ -46,7 +47,7 @@ The OBS Scene Collection this entire app was based on was made by the awesome [T
 - Extract the folder wherever
 - This folder contains 2 items namely a folder called "SNR" and an executable called "SNR_Hitman_Racetime_Automation.exe" (or just SNR_Hitman_Racetime_Automation on linux), the SNR folder contains all the things OBS needs and the executable is the app itself
 - Go to your old SNR-OS (SNR -Windows/-Linux) folder and copy and paste the config.ini over to your new SNR-OS
-- On the release I will have indicated whether the update is a large or small update compared to the previous release, if it is indicated as a large update follow the OBS Scene Collection install instructions again:
+- On the release I will have indicated whether the update is a large or small update compared to the previous release, if you are updateing to a version where the first digit of the release is different than yours, you will need to perform a large update (ex. v1.2 update to v2.1 - even if v2.1 itself is a small update you still need to update the obs scene collection as that was changed in v2), if it is indicated as a large update follow the OBS Scene Collection install instructions again:
     - Go to OBS (probably recommended that you use the latest version)
     - If you want to remove the old SNR scene collection you can delete it or rename it as such
     - Import the scene to OBS with Scene Collection -> Import -> Browse -> SNR.json in the SNR folder, use the same folder when it asks you to locate the missing images.
@@ -61,7 +62,6 @@ The OBS Scene Collection this entire app was based on was made by the awesome [T
 
 ## To Do:
 - Add SNSASO toggle, will make things easier to only have to maintain 1 app and snsaso app is lacking a lot on functionality
-- Add options to configure the height of names in app much like the timer duration
 - Store many options in the cfg .ini (ex. above mentioned snsaso toggle, timer duration, toggled options)
 - Potentially look into a better way to display 4p screens (SNR - idk if there is one)
 - Record video guide for install + usage
